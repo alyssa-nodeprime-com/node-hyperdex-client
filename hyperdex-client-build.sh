@@ -30,7 +30,7 @@ HYPERDEX=hyperdex-$HYPERDEX_VERSION
 # Build json-c
 cd "$BUILD_TMP"
 if [ ! -e "$JSON_C" ]; then
-    tar xzf "$ROOT/$JSON_C.tar.gz"
+    tar xzf "$ROOT/deps/$JSON_C.tar.gz"
 fi
 cd "$JSON_C"
 ./configure --prefix="$BUILD"
@@ -40,7 +40,7 @@ make install
 # Build po6
 cd "$BUILD_TMP"
 if [ ! -e "PO6" ]; then
-    tar xzf "$ROOT/$PO6.tar.gz"
+    tar xzf "$ROOT/deps/$PO6.tar.gz"
 fi
 cd "$PO6"
 ./configure --prefix="$BUILD"
@@ -50,7 +50,7 @@ make install
 # Build e
 cd "$BUILD_TMP"
 if [ ! -e "$E" ]; then
-    tar xzf "$ROOT/$E.tar.gz"
+    tar xzf "$ROOT/deps/$E.tar.gz"
 fi
 cd "$E"
 ./configure --prefix="$BUILD" \
@@ -61,7 +61,7 @@ make install
 # Build BusyBee
 cd "$BUILD_TMP"
 if [ ! -e "$BUSYBEE" ]; then
-    tar xzf "$ROOT/$BUSYBEE.tar.gz"
+    tar xzf "$ROOT/deps/$BUSYBEE.tar.gz"
 fi
 cd "$BUSYBEE"
 ./configure --prefix="$BUILD" \
@@ -73,7 +73,7 @@ make install
 # Build Replicant
 cd "$BUILD_TMP"
 if [ ! -e "$REPLICANT" ]; then
-    tar xzf "$ROOT/$REPLICANT.tar.gz"
+    tar xzf "$ROOT/deps/$REPLICANT.tar.gz"
 fi
 cd "$REPLICANT"
 ./configure --prefix="$BUILD" \
@@ -87,7 +87,7 @@ make install
 # Build HyperDex
 cd "$BUILD_TMP"
 if [ ! -e "$HYPERDEX" ]; then
-    tar xzf "$ROOT/$HYPERDEX.tar.gz"
+    tar xzf "$ROOT/deps/$HYPERDEX.tar.gz"
 fi
 cd "$HYPERDEX"
 ./configure --prefix="$BUILD" \
