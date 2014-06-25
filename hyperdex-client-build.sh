@@ -29,7 +29,9 @@ HYPERDEX=hyperdex-$HYPERDEX_VERSION
 
 # Build json-c
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$JSON_C.tar.gz"
+if [ ! -e "$JSON_C" ]; then
+    tar xzf "$ROOT/$JSON_C.tar.gz"
+fi
 cd "$JSON_C"
 ./configure --prefix="$BUILD"
 make
@@ -37,7 +39,9 @@ make install
 
 # Build po6
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$PO6.tar.gz"
+if [ ! -e "PO6" ]; then
+    tar xzf "$ROOT/$PO6.tar.gz"
+fi
 cd "$PO6"
 ./configure --prefix="$BUILD"
 make
@@ -45,7 +49,9 @@ make install
 
 # Build e
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$E.tar.gz"
+if [ ! -e "$E" ]; then
+    tar xzf "$ROOT/$E.tar.gz"
+fi
 cd "$E"
 ./configure --prefix="$BUILD" \
     PO6_CFLAGS=-I"${BUILD}/include" PO6_LIBS=-L"${BUILD}/lib"
@@ -54,7 +60,9 @@ make install
 
 # Build BusyBee
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$BUSYBEE.tar.gz"
+if [ ! -e "$BUSYBEE" ]; then
+    tar xzf "$ROOT/$BUSYBEE.tar.gz"
+fi
 cd "$BUSYBEE"
 ./configure --prefix="$BUILD" \
     PO6_CFLAGS=-I"${BUILD}/include" PO6_LIBS=-L"${BUILD}/lib" \
@@ -64,7 +72,9 @@ make install
 
 # Build Replicant
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$REPLICANT.tar.gz"
+if [ ! -e "$REPLICANT" ]; then
+    tar xzf "$ROOT/$REPLICANT.tar.gz"
+fi
 cd "$REPLICANT"
 ./configure --prefix="$BUILD" \
     PO6_CFLAGS=-I"${BUILD}/include" PO6_LIBS=-L"${BUILD}/lib" \
@@ -76,7 +86,9 @@ make install
 
 # Build HyperDex
 cd "$BUILD_TMP"
-tar xzf "$ROOT/$HYPERDEX.tar.gz"
+if [ ! -e "$HYPERDEX" ]; then
+    tar xzf "$ROOT/$HYPERDEX.tar.gz"
+fi
 cd "$HYPERDEX"
 ./configure --prefix="$BUILD" \
     PO6_CFLAGS=-I"${BUILD}/include" PO6_LIBS=-L"${BUILD}/lib" \
@@ -87,8 +99,13 @@ make
 make install
 
 # Build Node Bindings
-# XXX need build the bindings/node.js dir of HyperDex and link against the
 # includes and libs in ${BUILD}
+cd "$BUILD_TMP"
+cd "$HYPERDEX"
+cd bindings/node.js
+$ROOT/node_modules/.bin/node-gyp configure
+CFLAGS=-I"${BUILD}/include" LDFLAGS=-L"${BUILD}/lib" $ROOT/node_modules/.bin/node-gyp build
+cp build/Release/hyperdex-client.node "$BUILD"
 
 # Cleanup
-rm -r "$BUILD_TMP"
+rm -rf "$BUILD_TMP"
