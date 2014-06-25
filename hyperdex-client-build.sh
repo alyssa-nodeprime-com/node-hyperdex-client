@@ -103,8 +103,8 @@ make install
 cd "$BUILD_TMP"
 cd "$HYPERDEX"
 cd bindings/node.js
-$ROOT/node_modules/.bin/node-gyp configure
-CFLAGS=-I"${BUILD}/include" LDFLAGS=-L"${BUILD}/lib" $ROOT/node_modules/.bin/node-gyp build
+node-gyp configure
+CFLAGS=-I"${BUILD}/include" LDFLAGS=-L"${BUILD}/lib" node-gyp build
 cp build/Release/hyperdex-client.node "$BUILD"
 
 # Cleanup

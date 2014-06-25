@@ -8,9 +8,6 @@
     "url": "http://github.com/alyssa-nodeprime-com/node-hyperdex-client"
   },
   "keywords": ["hyperdex"],
-  "devDependencies": {
-    "node-gyp": "0.13.1"
-  },
   "scripts": {
     "build": "node-gyp configure build"
   },
