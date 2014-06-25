@@ -2,10 +2,10 @@
   "name": "hyperdex-client",
   "description": "hyperdex client",
   "version": "1.1.0",
-  "author": "Alyssa Kwan <me@alyssackwan.name>",
+  "author": "Alyssa Kwan <alyssa@nodeprime.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alyssackwan/node-hyperdex-client"
+    "url": "http://github.com/alyssa-nodeprime-com/node-hyperdex-client"
   },
   "keywords": ["hyperdex"],
   "devDependencies": {
