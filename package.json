@@ -13,6 +13,6 @@
   },
   "scripts": {
     "build": "node-gyp configure build"
-  }
+  },
   "main": "lib/index"
 }
