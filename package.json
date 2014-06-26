@@ -1,7 +1,7 @@
 {
   "name": "hyperdex-client",
   "description": "hyperdex client",
-  "version": "1.1.0",
+  "version": "0.0.7",
   "author": "Alyssa Kwan <alyssa@nodeprime.com>",
   "repository": {
     "type": "git",
